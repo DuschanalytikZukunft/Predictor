@@ -10,3 +10,21 @@ public class ServerApplication {
         SpringApplication.run(ServerApplication.class, args);
     }
 }
+
+//USD = "$.Valute.USD"
+//EUR = "$.Valute.EUR"
+/*public static Valute extractValuteData(Response<BodyWrapper> response) {
+    assertResponse(response)
+            .is200OK()
+            .isNotNullData();
+    assert response.body() != null;
+    return response.body().convert(USD, Valute.class);
+}*/
+
+//tests
+
+/*
+await().atMost(5, SECONDS)
+        .untilAsserted(() -> assertThat(extractValuteData(response)
+            .isEqualTo(...)));
+ */

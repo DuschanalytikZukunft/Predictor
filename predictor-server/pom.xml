@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <maven.surefire.version>2.22.0</maven.surefire.version>
     </properties>
 
     <dependencies>
@@ -58,13 +59,58 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics</artifactId>
+            <version>0.12.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.14.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaDirectory>src/main/resources/xsd</schemaDirectory>
+                    <bindingDirectory>src/main/resources/xsd</bindingDirectory>
+                    <removeOldOutput>true</removeOldOutput>
+                    <extension>true</extension>
+                    <verbose>false</verbose>
+                    <readOnly>true</readOnly>
+                    <args>
+                        <arg>-Xsetters</arg>
+                        <arg>-Xfluent-api</arg>
+                        <arg>-Xinheritance</arg>
+                        <arg>-Xequals</arg>
+                        <arg>-XhashCode</arg>
+                    </args>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics</artifactId>
+                            <version>0.12.0</version> <!-- "New" version 1.11.1 is in fact older than 0.12.0-->
+                        </plugin>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-fluent-api</artifactId>
+                            <version>3.0</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -82,6 +128,13 @@
                                 <resource>
                                     <directory>../predictor-client/dist/predictor-client</directory>
                                     <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>src/main/resources/</directory>
+                                    <includes>
+                                        <include>*.properties</include>
+                                        <include>*.xml</include>
+                                    </includes>
                                 </resource>
                             </resources>
                         </configuration>
