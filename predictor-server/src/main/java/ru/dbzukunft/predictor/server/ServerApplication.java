@@ -11,8 +11,4 @@ public class ServerApplication {
         SpringApplication.run(ServerApplication.class, args);
     }
 
-    @RequestMapping("/predictor")
-    public String showHelloWorld(){
-        return "predictor";
-    }
 }

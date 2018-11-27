@@ -13,8 +13,10 @@ public class StackoverflowController {
     @Autowired
     private StackoverflowService stackoverflowService;
 
-    @RequestMapping("/predictor/")
+    @RequestMapping("/predictor")
     public PredictorWebsite getListOfProviders() {
+        int b = 5;
+        System.out.println("ssss");
         return stackoverflowService.getCrbDaily();
     }
 

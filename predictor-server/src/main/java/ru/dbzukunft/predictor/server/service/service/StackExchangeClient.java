@@ -9,7 +9,6 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -26,15 +25,13 @@ public class StackExchangeClient {
 
     CbrDaily getCbrDaily() {
         String url = "https://www.cbr-xml-daily.ru/daily_json.js";
-        String json = null;
         try {
-            json = Jsoup.connect(url).ignoreContentType(true).execute().body();
-        } catch (IOException e) {
+            String json = Jsoup.connect(url).ignoreContentType(true).execute().body();
+            CbrDaily response = restTemplate.getForObject(json, CbrDaily.class);
+            return Objects.requireNonNull(response);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //TODO Json parsing
-        CbrDaily response = restTemplate.getForObject(Objects.requireNonNull(json), CbrDaily.class);
-        return Objects.requireNonNull(response);
     }
 
 }
