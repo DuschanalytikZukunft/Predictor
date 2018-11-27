@@ -2,6 +2,7 @@ package ru.dbzukunft.predictor.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
 public class ServerApplication {
@@ -9,22 +10,9 @@ public class ServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
     }
+
+    @RequestMapping("/predictor")
+    public String showHelloWorld(){
+        return "predictor";
+    }
 }
-
-//USD = "$.Valute.USD"
-//EUR = "$.Valute.EUR"
-/*public static Valute extractValuteData(Response<BodyWrapper> response) {
-    assertResponse(response)
-            .is200OK()
-            .isNotNullData();
-    assert response.body() != null;
-    return response.body().convert(USD, Valute.class);
-}*/
-
-//tests
-
-/*
-await().atMost(5, SECONDS)
-        .untilAsserted(() -> assertThat(extractValuteData(response)
-            .isEqualTo(...)));
- */
