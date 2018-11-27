@@ -11,7 +11,7 @@ import ru.dbzukunft.predictor.server.service.service.StackoverflowService;
 public class StackoverflowController {
 
     @Autowired
-    private StackoverflowService stackoverflowService; //dependency injection
+    private StackoverflowService stackoverflowService;
 
     @RequestMapping("/predictor/")
     public PredictorWebsite getListOfProviders() {

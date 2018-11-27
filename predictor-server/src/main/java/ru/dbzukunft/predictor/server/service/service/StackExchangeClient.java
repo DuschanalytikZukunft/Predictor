@@ -3,13 +3,13 @@ package ru.dbzukunft.predictor.server.service.service;
 import com.predictor.beans.CbrDaily;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.jsoup.Jsoup;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -26,13 +26,15 @@ public class StackExchangeClient {
 
     CbrDaily getCbrDaily() {
         String url = "https://www.cbr-xml-daily.ru/daily_json.js";
+        String json = null;
         try {
-            CbrDaily response = restTemplate.getForObject(new URI(url), CbrDaily.class);
-            return Objects.requireNonNull(response);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+            json = Jsoup.connect(url).ignoreContentType(true).execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
+        //TODO Json parsing
+        CbrDaily response = restTemplate.getForObject(Objects.requireNonNull(json), CbrDaily.class);
+        return Objects.requireNonNull(response);
     }
 
 }
