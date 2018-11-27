@@ -30,7 +30,7 @@ public class StackExchangeClient {
         try {
             json = Jsoup.connect(url).ignoreContentType(true).execute().body();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         //TODO Json parsing
         CbrDaily response = restTemplate.getForObject(Objects.requireNonNull(json), CbrDaily.class);
