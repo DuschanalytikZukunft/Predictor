@@ -17,13 +17,14 @@ public class PredictorService {
         this.stackExchangeClient = stackExchangeClient;
     }
 
-    public ExchangeRate getCrbDaily() {
+    public @NotNull List<ExchangeRate> getCrbDaily() {
         return toPredictorWebsite(stackExchangeClient.getExchangeRate());
     }
 
-    private ExchangeRate toPredictorWebsite(@NotNull List<ExchangeRate> exchangeRates) {
-        return exchangeRates.stream().filter(exchangeRate -> exchangeRate.getCurrency() != null && exchangeRate.getCurrency().equals("USD")).findFirst().orElseThrow(() ->
-                new IllegalArgumentException("Don't find USD rate"));
+    private @NotNull List<ExchangeRate> toPredictorWebsite(@NotNull List<ExchangeRate> exchangeRates) {
+       // return exchangeRates.stream().filter(exchangeRate -> exchangeRate.getCurrency() != null && exchangeRate.getCurrency().equals("USD")).findFirst().orElseThrow(() ->
+        //        new IllegalArgumentException("Don't find USD rate"));
+        return exchangeRates;
     }
 
 }
