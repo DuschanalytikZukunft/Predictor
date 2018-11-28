@@ -15,30 +15,22 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>date</th>
-                                <th>timestamp</th>
-                                <th>previousDate</th>
-                                <th>previousUrl</th>
-                                <th>valueEUR</th>
-                                <th>previousEUR</th>
-                                <th>charCodeEUR</th>
-                                <th>valueUSD</th>
-                                <th>previousUSD</th>
-                                <th>charCodeUSD</th>
+                                <th>base</th>
+                                <th>currency</th>
+                                <th>saleRateNB</th>
+                                <th>purchaseRateNB</th>
+                                <th>saleRate</th>
+                                <th>purchaseRate</th>
                             </tr>
                             </thead>
                             <thead>
                             <tr ng-repeat="item in websites">
-                                <td>{{item.date}}</td>
-                                <td>{{item.timestamp}}</td>
-                                <td>{{item.previousDate}}</td>
-                                <td>{{item.previousUrl}}</td>
-                                <td>{{item.valueEUR}}</td>
-                                <td>{{item.previousEUR}}</td>
-                                <td>{{item.charCodeEUR}}</td>
-                                <td>{{item.valueUSD}}</td>
-                                <td>{{item.previousUSD}}</td>
-                                <td>{{item.charCodeUSD}}</td>
+                                <td>{{item.baseCurrency}}</td>
+                                <td>{{item.currency}}</td>
+                                <td>{{item.saleRateNB}}</td>
+                                <td>{{item.purchaseRateNB}}</td>
+                                <td>{{item.saleRate}}</td>
+                                <td>{{item.purchaseRate}}</td>
                             </tr>
                             </thead>
                         </table>
