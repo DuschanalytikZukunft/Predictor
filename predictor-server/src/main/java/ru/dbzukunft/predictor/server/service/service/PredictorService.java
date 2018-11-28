@@ -8,12 +8,12 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Service
-public class StackoverflowService {
+public class PredictorService {
 
-    private final StackExchangeClient stackExchangeClient;
+    private final PredictorExchangeClient stackExchangeClient;
 
     @Autowired
-    public StackoverflowService(StackExchangeClient stackExchangeClient) {
+    public PredictorService(PredictorExchangeClient stackExchangeClient) {
         this.stackExchangeClient = stackExchangeClient;
     }
 

@@ -15,7 +15,7 @@ import java.util.Objects;
  * Time: 14:53
  */
 @Component
-public class StackExchangeClient {
+public class PredictorExchangeClient {
 
     List<ExchangeRate> getExchangeRate() {
         String url = "https://api.privatbank.ua/p24api/exchange_rates?json&date=27.11.2018";

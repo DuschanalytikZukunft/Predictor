@@ -4,16 +4,16 @@ import com.predictor.beans.ExchangeRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.dbzukunft.predictor.server.service.service.StackoverflowService;
+import ru.dbzukunft.predictor.server.service.service.PredictorService;
 
 @RestController
 @RequestMapping("/api")
-public class StackoverflowController {
+public class PredictorController {
 
-    private final StackoverflowService stackoverflowService;
+    private final PredictorService stackoverflowService;
 
     @Autowired
-    public StackoverflowController(StackoverflowService stackoverflowService) {
+    public PredictorController(PredictorService stackoverflowService) {
         this.stackoverflowService = stackoverflowService;
     }
 
