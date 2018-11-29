@@ -18,13 +18,13 @@ public class PredictorController {
     private final PredictorService predictorService;
 
     @Autowired
-    public PredictorController(PredictorService stackoverflowService) {
-        this.predictorService = stackoverflowService;
+    public PredictorController(PredictorService predictorService) {
+        this.predictorService = predictorService;
     }
 
     @RequestMapping(value = "/rates", method = RequestMethod.GET)
     public @NotNull List<ExchangeRate> getListOfProviders() {
-        return predictorService.getTodayRates();
+        return predictorService.getRates();
     }
 
     @RequestMapping(value = "/rates?{date}", method = RequestMethod.GET)
@@ -32,4 +32,13 @@ public class PredictorController {
         return predictorService.getRates(date);
     }
 
+    @RequestMapping(value = "/{valute}", method = RequestMethod.GET)
+    public @NotNull ExchangeRate getValute(@PathVariable String valute) {
+        return predictorService.getValute(valute);
+    }
+
+    @RequestMapping(value = "/{valute}?{date}", method = RequestMethod.GET)
+    public @NotNull ExchangeRate getValute(@PathVariable String valute, @PathVariable String date) {
+        return predictorService.getValute(valute, date);
+    }
 }

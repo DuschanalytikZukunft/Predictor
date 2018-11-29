@@ -10,3 +10,14 @@ app.controller('AppCtrl', function ($scope, $http) {
         console.log("error = " + error.status);
     });
 });
+
+app.controller('errorCtrl', function ($scope, $http) {
+    $http({
+        method: 'GET',
+        url: 'http://localhost:8090/api/rates'
+    }).then(function (response) {
+        $scope.websites = response.data;
+    }, function (error) {
+        console.log("error = " + error.status);
+    });
+});
