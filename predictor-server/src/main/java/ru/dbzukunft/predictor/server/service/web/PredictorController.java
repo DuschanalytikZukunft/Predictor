@@ -2,7 +2,9 @@ package ru.dbzukunft.predictor.server.service.web;
 
 import com.predictor.beans.ExchangeRate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ru.dbzukunft.predictor.server.service.service.PredictorService;
 
@@ -13,16 +15,21 @@ import java.util.List;
 @RequestMapping("/api")
 public class PredictorController {
 
-    private final PredictorService stackoverflowService;
+    private final PredictorService predictorService;
 
     @Autowired
     public PredictorController(PredictorService stackoverflowService) {
-        this.stackoverflowService = stackoverflowService;
+        this.predictorService = stackoverflowService;
     }
 
-    @RequestMapping("/predictor")
+    @RequestMapping(value = "/rates", method = RequestMethod.GET)
     public @NotNull List<ExchangeRate> getListOfProviders() {
-        return stackoverflowService.getCrbDaily();
+        return predictorService.getTodayRates();
+    }
+
+    @RequestMapping(value = "/rates?{date}", method = RequestMethod.GET)
+    public @NotNull List<ExchangeRate> getListOfProviders(@PathVariable String date) {
+        return predictorService.getRates(date);
     }
 
 }
