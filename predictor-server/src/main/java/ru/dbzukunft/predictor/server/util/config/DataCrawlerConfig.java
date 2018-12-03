@@ -1,38 +1,16 @@
 package ru.dbzukunft.predictor.server.util.config;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Configuration
-@PropertySource(value = "classpath:datacrawler.properties")
-@ConfigurationProperties(prefix = "alphavantage")
+@AllArgsConstructor
 public class DataCrawlerConfig {
 
-    @Value("${alphavantage.url}")
-    private String url;
-
-    @Value("${alphavantage.function}")
-    private String function;
-
-    @Value("${alphavantage.symbol}")
-    private String symbol;
-
-    @Value("${alphavantage.interval}")
-    private String interval;
-
-    @Value("${alphavantage.outputsize}")
-    private String outputsize;
-
-    @Value("${alphavantage.datatype}")
-    private String datatype;
-
-    @Value("${alphavantage.apikey}")
-    private String apikey;
+    private AlphaVantageConfigurationProperties aVProperties;
 
     @Bean
     public RestTemplate restTemplate() {
@@ -41,13 +19,13 @@ public class DataCrawlerConfig {
 
     @Bean
     public String alphaVantageUrl() {
-        return UriComponentsBuilder.fromHttpUrl(url)
-                .queryParam("function" , function)
-                .queryParam("symbol", symbol)
-                .queryParam("interval", interval)
-                .queryParam("outputsize", outputsize)
-                .queryParam("datatype", datatype)
-                .queryParam("apikey", apikey)
+        return UriComponentsBuilder.fromHttpUrl(aVProperties.getUrl())
+                .queryParam("function" , aVProperties.getFunction())
+                .queryParam("symbol", aVProperties.getSymbol())
+                .queryParam("interval", aVProperties.getInterval())
+                .queryParam("outputsize", aVProperties.getOutputsize())
+                .queryParam("datatype", aVProperties.getDatatype())
+                .queryParam("apikey", aVProperties.getApikey())
                 .build()
                 .toUriString();
     }
