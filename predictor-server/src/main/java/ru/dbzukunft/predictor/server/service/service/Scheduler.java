@@ -2,6 +2,7 @@ package ru.dbzukunft.predictor.server.service.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import ru.dbzukunft.predictor.server.service.DailyRatesService;
 
 public class Scheduler {
 
@@ -16,6 +17,8 @@ public class Scheduler {
     public void clearTempFolder() {
         predictorService.getRates();
         //TODO add to DB
+        DailyRatesService dailyRatesService = new DailyRatesService();
+        dailyRatesService.saveDailyRates(predictorService.getDailyRates());
     }
 
 }

@@ -1,11 +1,11 @@
 package ru.dbzukunft.predictor.server.service.web;
 
-import com.predictor.beans.ExchangeRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import ru.dbzukunft.predictor.server.entity.ExchangeRate;
 import ru.dbzukunft.predictor.server.service.service.PredictorService;
 
 import javax.validation.constraints.NotNull;

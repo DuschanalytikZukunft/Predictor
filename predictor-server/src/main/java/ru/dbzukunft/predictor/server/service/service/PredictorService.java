@@ -1,9 +1,9 @@
 package ru.dbzukunft.predictor.server.service.service;
 
-import com.predictor.beans.DailyRates;
-import com.predictor.beans.ExchangeRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.dbzukunft.predictor.server.entity.DailyRates;
+import ru.dbzukunft.predictor.server.entity.ExchangeRate;
 
 import javax.validation.constraints.NotNull;
 import java.text.DateFormat;
@@ -23,6 +23,10 @@ public class PredictorService {
 
     public @NotNull List<ExchangeRate> getRates() {
         return getRates(getCurrentDate());
+    }
+
+    public @NotNull DailyRates getDailyRates() {
+        return stackExchangeClient.getDailyRates(getCurrentDate());
     }
 
     public @NotNull List<ExchangeRate> getRates(@NotNull String date) {
