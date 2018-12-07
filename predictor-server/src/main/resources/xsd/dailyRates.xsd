@@ -3,15 +3,15 @@
            xmlns:tns="urn:beans.predictor.com"
            targetNamespace="urn:beans.predictor.com">
 
-    <xs:complexType name="DailyRate">
+    <xs:complexType name="DailyRateJxb">
         <xs:sequence>
             <xs:element name="date" type="xs:string"/>
             <xs:element name="baseCurrencyLit" type="xs:string"/>
-            <xs:element name="exchangeRate" type="tns:ExchangeRat" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="exchangeRate" type="tns:ExchangeRateJxb" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="ExchangeRat">
+    <xs:complexType name="ExchangeRateJxb">
         <xs:sequence>
             <xs:element name="baseCurrency" type="xs:string"/>
             <xs:element name="currency" type="xs:string"/>

@@ -14,9 +14,8 @@ public class Scheduler {
     }
 
     @Scheduled(cron = "0 0 0/24 * *  ?") //Start every 24h
-    public void clearTempFolder() {
+    public void saveRates() {
         predictorService.getRates();
-        //TODO add to DB
         DailyRatesService dailyRatesService = new DailyRatesService();
         dailyRatesService.saveDailyRates(predictorService.getDailyRates());
     }

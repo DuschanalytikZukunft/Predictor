@@ -3,7 +3,7 @@ package ru.dbzukunft.predictor.server.session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import ru.dbzukunft.predictor.server.entity.DailyRates;
+import ru.dbzukunft.predictor.server.entity.DailyRate;
 
 public class HibernateSessionFactoryUtil {
     private static SessionFactory sessionFactory;
@@ -14,7 +14,7 @@ public class HibernateSessionFactoryUtil {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(DailyRates.class);
+                configuration.addAnnotatedClass(DailyRate.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

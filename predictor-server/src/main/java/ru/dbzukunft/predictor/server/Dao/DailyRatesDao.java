@@ -2,36 +2,35 @@ package ru.dbzukunft.predictor.server.Dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import ru.dbzukunft.predictor.server.entity.DailyRates;
+import ru.dbzukunft.predictor.server.entity.DailyRate;
 import ru.dbzukunft.predictor.server.session.HibernateSessionFactoryUtil;
 
-import java.util.List;
 public class DailyRatesDao {
 
-    public DailyRates findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(DailyRates.class, id);
+    public DailyRate findById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(DailyRate.class, id);
     }
 
-    public void save(DailyRates dailyRates) {
+    public void save(DailyRate dailyRate) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.save(dailyRates);
+        session.save(dailyRate);
         tx1.commit();
         session.close();
     }
 
-    public void update(DailyRates dailyRates) {
+    public void update(DailyRate dailyRate) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(dailyRates);
+        session.update(dailyRate);
         tx1.commit();
         session.close();
     }
 
-    public void delete(DailyRates dailyRates) {
+    public void delete(DailyRate dailyRate) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(dailyRates);
+        session.delete(dailyRate);
         tx1.commit();
         session.close();
     }

@@ -19,11 +19,11 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
-        name = "DailyRates",
+        name = "DailyRate",
         propOrder = {"date", "baseCurrencyLit", "exchangeRate"}
 )
 @Entity
-public class DailyRates implements Equals2, HashCode2 {
+public class DailyRate implements Equals2, HashCode2 {
     @XmlElement(
             required = true
     )
@@ -39,7 +39,7 @@ public class DailyRates implements Equals2, HashCode2 {
     @ElementCollection(targetClass=ExchangeRate.class)
     protected List<ExchangeRate> exchangeRate;
 
-    public DailyRates() {
+    public DailyRate() {
     }
 
     public String getDate() {
@@ -75,17 +75,17 @@ public class DailyRates implements Equals2, HashCode2 {
 
     }
 
-    public DailyRates withDate(String value) {
+    public DailyRate withDate(String value) {
         this.setDate(value);
         return this;
     }
 
-    public DailyRates withBaseCurrencyLit(String value) {
+    public DailyRate withBaseCurrencyLit(String value) {
         this.setBaseCurrencyLit(value);
         return this;
     }
 
-    public DailyRates withExchangeRate(ExchangeRate... values) {
+    public DailyRate withExchangeRate(ExchangeRate... values) {
         if (values != null) {
             ExchangeRate[] var2 = values;
             int var3 = values.length;
@@ -99,7 +99,7 @@ public class DailyRates implements Equals2, HashCode2 {
         return this;
     }
 
-    public DailyRates withExchangeRate(Collection<ExchangeRate> values) {
+    public DailyRate withExchangeRate(Collection<ExchangeRate> values) {
         if (values != null) {
             this.getExchangeRate().addAll(values);
         }
@@ -107,7 +107,7 @@ public class DailyRates implements Equals2, HashCode2 {
         return this;
     }
 
-    public DailyRates withExchangeRate(List<ExchangeRate> value) {
+    public DailyRate withExchangeRate(List<ExchangeRate> value) {
         this.setExchangeRate(value);
         return this;
     }
@@ -117,7 +117,7 @@ public class DailyRates implements Equals2, HashCode2 {
             if (this == object) {
                 return true;
             } else {
-                DailyRates that = (DailyRates)object;
+                DailyRate that = (DailyRate)object;
                 String lhsBaseCurrencyLit = this.getDate();
                 String rhsBaseCurrencyLit = that.getDate();
                 if (!strategy.equals(LocatorUtils.property(thisLocator, "date", lhsBaseCurrencyLit), LocatorUtils.property(thatLocator, "date", rhsBaseCurrencyLit), lhsBaseCurrencyLit, rhsBaseCurrencyLit, this.date != null, that.date != null)) {
